@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# タイトルの引数チェック
+if [ -z "$1" ]; then
+  echo "タイトルを指定してください"
+  exit 1
+fi
+
+title="$1"
+
+date=$(date +%Y-%m-%d)
+filename="src/content/blog/${date}-$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]').md"
+
+
+mkdir -p src/content/blog
+
+echo "---
+title: '$title'
+description: ''
+pubDate: '$date'
+tags: []
+---
+" > "$filename"
+
+echo "作成しました: $filename"
