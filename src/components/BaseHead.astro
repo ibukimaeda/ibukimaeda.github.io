@@ -55,6 +55,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 
+<!-- katex -->
 <link
 	rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.css"
@@ -66,4 +67,18 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 	src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.js"
 	integrity="sha384-ImWHyYvDPlRzwFnvLhG9Jcpm/7qL4SVIuJK0C6Rj+Mf7fpeNJCLCynC+EVz4kCSA"
 	crossorigin="anonymous">
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script
+    type="text/partytown"
+    src="https://www.googletagmanager.com/gtag/js?id=G-F5N4386YZG">
+</script>
+<script type="text/partytown">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "[GA_MEASUREMENT_ID]");
 </script>
