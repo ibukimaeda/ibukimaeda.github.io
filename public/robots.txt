@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ibukimaeda.github.io/sitemap-index.xml
