@@ -15,10 +15,11 @@ filename="src/content/blog/${date}-$(echo "$title" | tr ' ' '-' | tr '[:upper:]'
 mkdir -p src/content/blog
 
 echo "---
-title: '$title'
-description: ''
-pubDate: '$date'
+title: "$title"
+description: ""
+pubDate: "$date"
 tags: []
+draft: true
 ---
 " > "$filename"
 

@@ -12,13 +12,16 @@ type Post = {
         title: string;
         tags: string[];
         pubDate: string;
+        draft: boolean;
     };
 };
 
 export async function getStaticPaths() {
     let allPosts = Object.entries(
         import.meta.glob<Post>("../../content/blog/*.md", { eager: true })
-    ).map(([path, content]) => ({ ...content, path }));
+    ).map(([path, content]) => ({ ...content, path })).filter(
+        (post) => import.meta.env.PROD ? !post.frontmatter.draft : true
+    );
 
 
     allPosts = allPosts.map((post) => {
