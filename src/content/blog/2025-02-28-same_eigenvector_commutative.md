@@ -5,7 +5,7 @@ pubDate: '2025-02-28'
 tags: [
     "Linear Algebra"
 ]
-draft: true
+draft: false
 ---
 
 以下の命題が成り立つことを利用することがあったのでメモしておく．

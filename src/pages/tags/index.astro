@@ -4,84 +4,83 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 
-// const allPosts = await Astro.glob("../../content/blog/*.md");
-const allPosts = await Promise.all(
-    Object.entries(import.meta.glob("../../content/blog/*.md", { eager: true })).map(
-        ([, module]) => module
-    )
-);
+import { getPublicPosts } from "../../util";
 
-const tagCounts = allPosts.reduce((counts: { [key: string]: number }, post: any) => {
-    post.frontmatter.tags.forEach((tag: string) => {
-        counts[tag] = (counts[tag] || 0) + 1;
+const posts = await getPublicPosts();
+const tagCounts = posts.reduce(
+  (counts: { [key: string]: number }, post: any) => {
+    post.data.tags.forEach((tag: string) => {
+      counts[tag] = (counts[tag] ?? 0) + 1;
     });
     return counts;
-}, {});
+  },
+  {}
+);
 
-const tags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
+const tags = [...new Set(posts.map((post: any) => post.data.tags).flat())];
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <style>
-            main {
-                width: 960px;
-            }
-            ul {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 2rem;
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            ul li {
-                width: 100%;
-            }
-            ul li * {
-                text-decoration: none;
-                transition: 0.2s ease;
-            }
-            ul li a {
-                display: block;
-            }
-            .tag {
-                margin: 0;
-                color: rgb(var(--black));
-                line-height: 1;
-            }
-            .date {
-                margin: 0;
-                color: rgb(var(--gray));
-            }
-            ul li a:hover h4,
-            ul li a:hover .date {
-                color: rgb(var(--accent));
-            }
-        </style>
-    </head>
-    <body>
-        <Header title={SITE_TITLE} />
-        <main>
-            <section>
-                <ul>
-                    <h2>タグ一覧</h2>
-                    {
-                        tags.map((tag) => (
-                            <li>
-                                <a href={`/tags/${tag}`}>
-                                    <h4 class="tag">
-                                        {tag} ({tagCounts[tag]})
-                                    </h4>
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 960px;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        width: 100%;
+      }
+      ul li * {
+        text-decoration: none;
+        transition: 0.2s ease;
+      }
+      ul li a {
+        display: block;
+      }
+      .tag {
+        margin: 0;
+        color: rgb(var(--black));
+        line-height: 1;
+      }
+      .date {
+        margin: 0;
+        color: rgb(var(--gray));
+      }
+      ul li a:hover h4,
+      ul li a:hover .date {
+        color: rgb(var(--accent));
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <section>
+        <ul>
+          <h2>タグ一覧</h2>
+          {
+            tags.map((tag) => (
+              <li>
+                <a href={`/tags/${tag}`}>
+                  <h4 class="tag">
+                    {tag} ({tagCounts[tag]})
+                  </h4>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>

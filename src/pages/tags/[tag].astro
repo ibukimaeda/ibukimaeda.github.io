@@ -6,54 +6,53 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import FormattedDate from "../../components/FormattedDate.astro";
 
 type Post = {
-    file: string;
-    url: string;
-    frontmatter: {
-        title: string;
-        tags: string[];
-        pubDate: string;
-        draft: boolean;
-    };
+  file: string;
+  url: string;
+  frontmatter: {
+    title: string;
+    tags: string[];
+    pubDate: string;
+    draft: boolean;
+  };
 };
 
 export async function getStaticPaths() {
-    let allPosts = Object.entries(
-        import.meta.glob<Post>("../../content/blog/*.md", { eager: true })
-    ).map(([path, content]) => ({ ...content, path })).filter(
-        (post) => import.meta.env.PROD ? !post.frontmatter.draft : true
-    );
+  let allPosts = Object.entries(
+    import.meta.glob<Post>("../../content/blog/*.md", { eager: true })
+  )
+    .map(([path, content]) => ({ ...content, path }))
+    .filter((post) => (import.meta.env.PROD ? !post.frontmatter.draft : true));
 
+  allPosts = allPosts.map((post) => {
+    if (post.file) {
+      const parts = post.file.split("/");
+      const fileName = parts.pop();
 
-    allPosts = allPosts.map((post) => {
-        if (post.file) {
-            const parts = post.file.split("/");
-            const fileName = parts.pop();
+      if (fileName) {
+        const slug = fileName.replace(/\.md$/, "").toLowerCase();
+        return { ...post, url: `/blog/${slug}/` };
+      }
+    }
+    return post;
+  });
 
-            if (fileName) {
-                const slug = fileName.replace(/\.md$/, "").toLowerCase();
-                return { ...post, url: `/blog/${slug}/` };
-            }
-        }
-        return post;
-    });
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+  ];
 
-    const uniqueTags = [
-        ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
-    ];
-
-    return uniqueTags.map((tag) => {
-        const filteredPosts = allPosts
-            .filter((post) => post.frontmatter.tags.includes(tag))
-            .sort(
-                (a, b) =>
-                    new Date(b.frontmatter.pubDate).getTime() -
-                    new Date(a.frontmatter.pubDate).getTime(),
-            );
-        return {
-            params: { tag },
-            props: { posts: filteredPosts },
-        };
-    });
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts
+      .filter((post) => post.frontmatter.tags.includes(tag))
+      .sort(
+        (a, b) =>
+          new Date(b.frontmatter.pubDate).getTime() -
+          new Date(a.frontmatter.pubDate).getTime()
+      );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
@@ -62,74 +61,66 @@ const { posts } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-        <style>
-            main {
-                width: 960px;
-            }
-            ul {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 2rem;
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            ul li {
-                width: 100%;
-            }
-            ul li * {
-                text-decoration: none;
-                transition: 0.2s ease;
-            }
-            ul li a {
-                display: block;
-            }
-            .title {
-                margin: 0;
-                color: rgb(var(--black));
-                line-height: 1;
-            }
-            .date {
-                margin: 0;
-                color: rgb(var(--gray));
-            }
-            ul li a:hover h4,
-            ul li a:hover .date {
-                color: rgb(var(--accent));
-            }
-        </style>
-    </head>
-    <body>
-        <Header title={SITE_TITLE} />
-        <main>
-            <section>
-                <ul>
-                    <h2>{tag} のタグが付いた記事一覧</h2>
-                    {
-                        posts.map((post) => (
-                            <li>
-                                <a href={post.url}>
-                                    <h4 class="title">
-                                        {post.frontmatter.title}{" "}
-                                    </h4>
-                                    <p class="date">
-                                        <FormattedDate
-                                            date={
-                                                new Date(
-                                                    post.frontmatter.pubDate,
-                                                )
-                                            }
-                                        />
-                                    </p>
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 960px;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        width: 100%;
+      }
+      ul li * {
+        text-decoration: none;
+        transition: 0.2s ease;
+      }
+      ul li a {
+        display: block;
+      }
+      .title {
+        margin: 0;
+        color: rgb(var(--black));
+        line-height: 1;
+      }
+      .date {
+        margin: 0;
+        color: rgb(var(--gray));
+      }
+      ul li a:hover h4,
+      ul li a:hover .date {
+        color: rgb(var(--accent));
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <section>
+        <ul>
+          <h2>{tag} のタグが付いた記事一覧</h2>
+          {
+            posts.map((post) => (
+              <li>
+                <a href={post.url}>
+                  <h4 class="title">{post.frontmatter.title} </h4>
+                  <p class="date">
+                    <FormattedDate date={new Date(post.frontmatter.pubDate)} />
+                  </p>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
