@@ -1,0 +1,27 @@
+{
+    "cSpell.words": [],
+    "markdownlint.config": {},
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.markdownlint": "always"
+        },
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "always"
+        },
+        "editor.tabSize": 4,
+    }
+    ,"[astro]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "always"
+        },
+        "editor.tabSize": 2,
+    }
+}
