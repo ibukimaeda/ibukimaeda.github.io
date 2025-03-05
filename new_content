@@ -16,7 +16,7 @@ mkdir -p src/content/blog
 
 echo "---
 title: "$title"
-description: ""
+description: \"\"
 pubDate: "$date"
 tags: []
 draft: true
