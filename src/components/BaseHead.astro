@@ -15,6 +15,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 ---
 
+<!-- Google tag (gtag.js) -->
+<script
+  type="text/partytown"
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-F5N4386YZG"></script>
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-F5N4386YZG");
+</script>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -78,22 +93,3 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.js"
   integrity="sha384-ImWHyYvDPlRzwFnvLhG9Jcpm/7qL4SVIuJK0C6Rj+Mf7fpeNJCLCynC+EVz4kCSA"
   crossorigin="anonymous"></script>
-
-<!-- Google tag (gtag.js) -->
-<script
-  type="text/partytown"
-  src="https://www.googletagmanager.com/gtag/js?id=G-F5N4386YZG"></script>
-<script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-F5N4386YZG");
-</script>
-
-<!-- Google Search Console HTML Tag -->
-<meta
-  name="google-site-verification"
-  content="1A_NggYZRtTQ6LSiwF-1sUKmGuCMfpyU7FjRbPWycxE"
-/>
