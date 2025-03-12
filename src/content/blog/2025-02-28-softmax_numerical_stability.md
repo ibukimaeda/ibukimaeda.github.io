@@ -3,6 +3,7 @@ title: softmax の数値安定性について
 description: ""
 pubDate: 2025-02-28
 tags: [
+    "Mathematics",
     "Machine Learning"
 ]
 draft: false

@@ -3,6 +3,7 @@ title: 期待値の表記
 description: ""
 pubDate: 2025-03-05
 tags: [
+    "Mathematics",
     "Probability Theory",
     "Machine Learning",
 ]
@@ -29,4 +30,3 @@ $$
 $$
 
 ---
-

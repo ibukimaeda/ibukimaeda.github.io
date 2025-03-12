@@ -3,6 +3,7 @@ title: "固有ベクトルを共有する対称行列の積は可換"
 description: ""
 pubDate: '2025-02-28'
 tags: [
+    "Mathematics",
     "Linear Algebra"
 ]
 draft: false
