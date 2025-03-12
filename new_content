@@ -16,7 +16,7 @@ title: ($filename)
 description: \"\"
 pubDate: ($date)
 tags: []
-draft: true
+draft: false
 ---
 
 ## References
