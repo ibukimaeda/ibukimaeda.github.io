@@ -1,23 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env nu
 
-# タイトルの引数チェック
-if [ -z "$1" ]; then
-  echo "タイトルを指定してください"
-  exit 1
-fi
+def main [filename?: string] {
+    if ($filename | is-empty) {
+        print "ファイル名を指定してください"
+        exit 1
+    }
 
-title="$1"
+    let date = (date now | format date "%Y-%m-%d")
+    let filename = $"src/content/blog/($date)-($filename | str replace ' ' '-' | str downcase).md"
 
-date=$(date +%Y-%m-%d)
-filename="src/content/blog/${date}-$(echo "$title" | tr ' ' '-' | tr '[:upper:]' '[:lower:]').md"
+    mkdir src/content/blog
 
-
-mkdir -p src/content/blog
-
-echo "---
-title: "$title"
+$"---
+title: ($filename)
 description: \"\"
-pubDate: "$date"
+pubDate: ($date)
 tags: []
 draft: true
 ---
@@ -25,6 +22,7 @@ draft: true
 ## References
 
 ---
-" > "$filename"
+" | save -f $filename
 
-echo "作成しました: $filename"
+    print $"作成しました: ($filename)"
+}
