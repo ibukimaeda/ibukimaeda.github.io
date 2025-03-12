@@ -1,6 +1,6 @@
 ---
 title: softmax は L1 ノルムに関してリプシッツ連続
-description: ""
+description: "本記事では，逆温度λのsoftmax関数がL1ノルムに関して(λ/2)-リプシッツ連続であることを，ヤコビ行列の作用素ノルムを用いて証明します．"
 pubDate: 2025-03-12
 tags: [
     "Mathematics",

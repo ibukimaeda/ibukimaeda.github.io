@@ -1,6 +1,6 @@
 ---
 title: latex で制約を2行に分ける
-description: ""
+description: "latexで制約を2行に分ける方法を解説．\substackを使用して数式内の制約を整形するテクニックを紹介します．"
 pubDate: 2025-03-10
 tags: [
     "tex"

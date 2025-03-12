@@ -1,6 +1,6 @@
 ---
 title: 期待値の表記
-description: ""
+description: "期待値の表記方法をまとめました．確率変数Xと関数fに対する期待値の異なる表記を解説し，分布Pに基づく期待値の計算方法を示します．"
 pubDate: 2025-03-05
 tags: [
     "Mathematics",

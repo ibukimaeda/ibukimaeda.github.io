@@ -1,6 +1,6 @@
 ---
 title: "固有ベクトルを共有する対称行列の積は可換"
-description: ""
+description: "固有ベクトルを共有する対称行列A,Bの積ABが可換(AB=BA)であることを対角化で証明．逆行列やA+λIの具体例を解説．"
 pubDate: '2025-02-28'
 tags: [
     "Mathematics",

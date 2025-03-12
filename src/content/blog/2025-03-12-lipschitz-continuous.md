@@ -1,6 +1,6 @@
 ---
 title: リプシッツ連続
-description: ""
+description: "リプシッツ連続の定義と性質を解説．距離空間におけるリプシッツ連続性，具体的な例，合成関数の性質について詳しく説明します．"
 pubDate: 2025-03-12
 tags: [
     "Mathematics",
