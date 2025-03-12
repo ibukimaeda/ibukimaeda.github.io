@@ -12,7 +12,7 @@ def main [filename?: string] {
     mkdir src/content/blog
 
 $"---
-title: ($filename)
+title: \"\"
 description: \"\"
 pubDate: ($date)
 tags: []

@@ -1,5 +1,5 @@
 ---
-title: softmax の数値安定性について
+title: "softmax の数値安定性について"
 description: "softmax関数の定義と数値安定性について解説．オーバーフロー問題を避けるための工夫として，最大値を引く手法を紹介．"
 pubDate: 2025-02-28
 tags: [
