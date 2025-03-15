@@ -1,5 +1,7 @@
 {
-    "cSpell.words": [],
+    "cSpell.words": [
+        "partytown"
+    ],
     "markdownlint.config": {},
     "[markdown]": {
         "editor.formatOnSave": true,
@@ -15,6 +17,8 @@
             "source.fixAll.eslint": "always"
         },
         "editor.tabSize": 4,
+        "editor.inlayHints.enabled": "on",
+        "editor.inlayHints.padding": true
     }
     ,"[astro]": {
         "editor.defaultFormatter": "astro-build.astro-vscode",
@@ -23,5 +27,7 @@
             "source.fixAll.eslint": "always"
         },
         "editor.tabSize": 2,
+        "editor.inlayHints.enabled": "on",
+        "editor.inlayHints.padding": true,
     }
 }

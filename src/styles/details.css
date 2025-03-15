@@ -1,0 +1,23 @@
+details {
+    border: 1px solid var(--c-neutral-border);
+    border-radius: 14px;
+    margin: 12px 0;
+}
+
+details > summary {
+    border-radius: 14px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: var(--c-bg-neutral);
+}
+
+details[open] > summary {
+    border-radius: 14px 14px 0 0;
+    background-color: var(--c-bg-neutral);
+}
+
+details > .details-content {
+    padding: 12px;
+    border-top: 1px solid var(--c-neutral-border);
+    border-radius: 0 0 14px 14px;
+}
