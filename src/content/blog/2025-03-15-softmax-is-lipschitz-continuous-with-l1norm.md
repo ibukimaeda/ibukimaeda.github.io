@@ -1,6 +1,6 @@
 ---
 title: "Softmax は L1 ノルムに関してリプシッツ連続"
-description: ""
+description: "この記事では，Softmax 関数が L1 ノルムに関して $\\frac{\\lambda}{2}$-リプシッツ連続であることを示します．"
 pubDate: 2025-03-15
 tags: [
     "Mathematics",
@@ -43,7 +43,7 @@ $$
 $$
 
 任意の $j$ で $0<\text{softmax}(\mathbf x)_j<1$ が成り立つので，関数 $f(x)=x(1-x),\:x\in(0,1)$ を考えると，$x=\frac12$ で最大値 $\frac14$ を取る．
-$\underset{1\le j\le d}{\max} \text{softmax}(\mathbf x)_j = \frac12$ となるような $\mathbf x$ が存在するので，以下が成り立つ．
+$\underset{1\le j\le d}{\max} \text{softmax}(\mathbf x)_j = \frac12$ となるような $\mathbf x$ は存在するので，以下が成り立つ．
 
 $$
 \|J_{\text{softmax}}(\mathbf x)\|_1 = 2\lambda\left(
