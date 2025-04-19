@@ -1,6 +1,6 @@
 ---
 title: "indicator と積分を用いて元の値を表現する"
-description: "この記事では，indicator 関数と積分を用いて元の値を表現する方法について説明します．"
+description: "この記事では、indicator 関数と積分を用いて元の値を表現する方法について説明します。"
 pubDate: 2025-03-16
 tags: [
     "Mathematics",
@@ -10,7 +10,7 @@ tags: [
 draft: false
 ---
 
-例えば，ベクトル $\mathbf x\in\mathbb R^d$ のノルムの2乗 $\|\mathbf x\|_2^2$ は，次のように表現できます．
+例えば、ベクトル $\mathbf x\in\mathbb R^d$ のノルムの2乗 $\|\mathbf x\|_2^2$ は、次のように表現できます。
 
 $$
 \begin{align*}
@@ -23,7 +23,7 @@ $$
 
 ## 使用例
 
-球の内側を除いた領域のノルムの期待値の上界を求めるときなどに使用できます．
+球の内側を除いた領域のノルムの期待値の上界を求めるときなどに使用できます。
 
 $$
 \begin{align*}
@@ -40,7 +40,7 @@ $$
 \end{align*}
 $$
 
-これより，tail bound $\mathbb P[\|\mathbf x\|_2^2>r]$ が分かれば，期待値の上界を求めることができます．
+これより、tail bound $\mathbb P[\|\mathbf x\|_2^2>r]$ が分かれば、期待値の上界を求めることができます。
 
 ## References
 

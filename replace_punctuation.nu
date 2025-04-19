@@ -8,8 +8,8 @@ def main [] {
     
     $md_files | each { |file|
         let content = open $file 
-        | str replace -a '、' '，'
-        | str replace -a '。' '．'
+        | str replace -a '，' '、' 
+        | str replace -a '．' '。'
         
         $content | save -f $file
         echo $"処理完了: ($file)"
