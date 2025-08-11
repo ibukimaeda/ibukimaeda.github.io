@@ -12,27 +12,25 @@ draft: false
 
 ## Softmax の定義
 
-$\text{softmax}:\mathbb R^d\to\mathbb R^d$ は次のように定義されます。
+$\text{softmax}:\mathbb R^d\to\mathbb R^d$ は次のように定義される。
 
 $$
 \text{softmax}(\mathbf{x})
-=
-\frac{1}{\sum\limits_{i=1}^d\exp(x_i)}
+= \frac{1}{\sum\limits_{i=1}^d\exp(x_i)}
 \begin{bmatrix}
 \exp(x_1) \\
 \dots \\
 \exp(x_d)
 \end{bmatrix}
-
 $$
 
-この写像は、入力値を正のベクトルに変換し、全ての成分の合計が 1 になるように正規化します。
-つまり、任意のベクトルを確率ベクトルへ移す写像です。
+この写像は、入力値を正のベクトルに変換し、全ての成分の合計が 1 になるように正規化する。
+つまり、任意のベクトルを確率ベクトルへ移す写像。
 
 ## 数値的な問題
 
-Softmax を計算する際、$\exp(x)$ を計算する必要があるため、$x$ の値が大きいとオーバーフローが発生しやすくなります。
-例えば、以下のように softmax 関数を定義すると、$x$ の値が大きいときにオーバーフローが発生します。
+Softmax を計算する際、$\exp(x)$ を計算する必要があるため、$x$ の値が大きいとオーバーフローが発生しやすくなる。
+例えば、以下のように softmax 関数を定義すると、$x$ の値が大きいときにオーバーフローが発生する。
 
 ```python
 import numpy as np
@@ -43,14 +41,14 @@ def softmax(x):
 print(f"{softmax(np.array([0.5, 0.1, 0.2]))}")
 >>> [0.41474187 0.27800979 0.30724834]
 
-# オーバーフローが発生する
+# オーバーフローが発生
 print(f"{softmax(np.array([1000.0, 0.1, 0.2]))}")
 >>> [nan  0.  0.]
 ```
 
 ## 数値安定性のための工夫
 
-Softmax の数値安定性のために、以下が成り立つことを利用します。
+Softmax の数値安定性のために、任意の $C\in\mathbb R$ に対して以下が成り立つことを利用する。
 
 $$
 \begin{align*}
@@ -61,7 +59,7 @@ $$
 \end{align*}
 $$
 
-ここで、$C = \max\limits_{i=1} x_i$ とすると任意の $j$ に対して $\exp(x_j - C)\le 1$ となり、オーバーフローを防ぐことができます。
+ここで、$C = \max\limits_{i=1} x_i$ とすると任意の $j$ に対して $\exp(x_j - C)\le 1$ となり、オーバーフローを防ぐことができる。
 
 ```python
 import numpy as np

@@ -54,25 +54,25 @@ $$
 $$
 第3項について $x^T A y = \text{Tr}[A^T xy^T]$ が成り立つから
 $$
-\begin{align}
+\begin{align*}
 \mathbb E_{x\sim p}[(x-\mu)^T \Sigma^{-1} (x-\mu)]
 &= \mathbb E_{x\sim p}[\text{Tr}[\Sigma^{-1} (x-\mu) (x-\mu)^T]] \\
 &= \text{Tr}[\Sigma^{-1} \mathbb E_{x\sim p}[(x-\mu) (x-\mu)^T]] \\
 &= \text{Tr}[\Sigma^{-1} \Sigma] \\
 &= \text{Tr}[I_d] \\
 &= d.
-\end{align}
+\end{align*}
 $$
 ここで、[トレースと期待値が可換](../2025-04-05-trace-expectation-commutativity)であることを利用した。
 したがって、
 $$
-\begin{align}
+\begin{align*}
 \text{KL}(p\|q)
 &= -h(p) + \frac{d}{2}\log(2\pi) + \frac{1}{2}\log\det \Sigma + \frac{1}{2}d \\
 &= -h(p) + \frac{1}{2} \log \det(2\pi e \Sigma) \\
 &= -h(p) + h(q) \\
 &\geq 0.
-\end{align}
+\end{align*}
 $$
 よって $h(p) \leq h(q)$ が成り立つ。
 これは、平均 $\mu$、分散共分散行列 $\Sigma$ が既知の確率密度 $p(x)$ の中で最大のエントロピーを持つものは正規分布 $\mathcal N(x|\mu,\Sigma)$ の密度 $q(x)$ であることを示している。
